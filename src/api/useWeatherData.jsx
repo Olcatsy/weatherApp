@@ -12,15 +12,20 @@ const useWeatherData = ({ city }) => {
     fetch(url)
       .then(response => response.json())
       .then(data => {
-        const transformedData = {
-          feelsLike: data.main?.feels_like,
-          sunsetTime: data?.sys?.sunset,
-          sunriseTime: data?.sys?.sunrise,
-          temperature: data.main?.temp,
-          weatherType: data.weather?.[0]?.main,
-          weatherIcon: data.weather?.[0]?.icon,
+        if (data?.name) {
+          const transformedData = {
+            feelsLike: data.main?.feels_like,
+            sunsetTime: data?.sys?.sunset,
+            sunriseTime: data?.sys?.sunrise,
+            temperature: data.main?.temp,
+            weatherType: data.weather?.[0]?.main,
+            weatherIcon: data.weather?.[0]?.icon,
+          }
+          setWeatherData(transformedData)
         }
-        setWeatherData(transformedData)
+        else {
+          setWeatherData(null)
+        }
       })
       .catch(error => setError(error))
       .finally(() => setLoading(false))

@@ -2,6 +2,7 @@ import React from 'react'
 
 import Loader from 'components/Loader/Loader';
 
+
 const WeatherCard = ({
   city,
   error,
@@ -16,7 +17,7 @@ const WeatherCard = ({
         : <div className='card'>
           {weatherData &&
             <>
-              <h2 className="card-city">{city}</h2>
+              <h2 className="card-city">{city[0].toUpperCase() + city.slice(1).toLowerCase()}</h2>
 
               <div className="card-temperature">
                 <p className="card-temperature-main">

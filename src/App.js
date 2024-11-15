@@ -51,12 +51,15 @@ function App() {
           />
 
           {/* display data here */}
-          <WeatherCard
-            city={city}
-            error={error}
-            loading={loading}
-            weatherData={weatherData}
-          />
+          {weatherData
+            ? <WeatherCard
+              city={city}
+              error={error}
+              loading={loading}
+              weatherData={weatherData}
+            />
+            : <p>City not found.Please try again</p>
+          }
         </div>
 
       </main>
