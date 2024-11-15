@@ -11,13 +11,18 @@ const SearchBar = ({ setCity }) => {
   }
 
   return (
-    <form>
+    <form className='searchbar'>
       <input
         type='text'
         value={inputValue}
         onChange={(e) => handleCityInput(e)}
+        className='searchbar-input'
+        placeholder='Search for a city'
       />
-      <button onClick={(e) => handleSearch(e)}>
+      <button
+        onClick={(e) => handleSearch(e)}
+        className='searchbar-submit'
+      >
         Search
       </button>
     </form>

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 import SearchBar from 'components/SearchBar/SearchBar';
 import WeatherCard from 'components/WeatherCard/WeatherCard';
+import logo from 'assets/logo.png'
 
 import useWeatherData from 'api/useWeatherData';
 
@@ -10,7 +11,6 @@ function App() {
   const [city, setCity] = useState('Toronto')
   const [dayOrNight, setDayOrNight] = useState('') // use for day/night theme
   const {weatherData, loading, error} = useWeatherData({city})
-
 
   // use for day/night theme
   const getDayOrNight = () => {
@@ -28,16 +28,23 @@ function App() {
   }
 
   // fetch data on load
-  // useEffect(() => {
-  //   fetchData()
-  //   getDayOrNight()
-  // }, []);
+  useEffect(() => {
+      getDayOrNight()
+  }, [weatherData]);
 
   return (
     <div className="App">
-      <main>
+      <main className={`${dayOrNight}-theme`}>
         <div className="container">
-          <h1>Breezio</h1>
+
+          <div className="header-wrapper">
+            <img
+              className="header-logo"
+              src={logo}
+              alt=""
+            />
+            <h1 className="header-text">Breezio</h1>
+          </div>
 
           <SearchBar
             setCity={setCity}
@@ -51,7 +58,7 @@ function App() {
             weatherData={weatherData}
           />
         </div>
-        
+
       </main>
     </div>
   );
@@ -66,7 +73,7 @@ export default App;
 //  *2bb. Gather data needed
 //  *2c. Create loader
 //  2d. Catch errors
-//  2e. Create custom hook
+//  *2e. Create custom hook
 // *3. Create and handle input field
 //  *3a. create and handle submit button
 // *4. Display response 
@@ -78,6 +85,7 @@ export default App;
 // 9. Favicon
 // 10. Encrypt the API key
 // *11. Transform data into a smaller object
+
 // Nice to have - buttons for major Canadian cities
 // Nice to have - autofill
 // Nice to have - day and night theme

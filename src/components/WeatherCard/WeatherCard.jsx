@@ -9,7 +9,7 @@ const WeatherCard = ({
   weatherData,
 }) => {
   return (
-    <div>
+    <div className='card'>
       {error && <p>Error{error}</p>}
       {loading
         ? <Loader />
