@@ -1,6 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { useState, useEffect } from 'react';
+
+import SearchBar from 'components/SearchBar/SearchBar';
+import WeatherCard from 'components/WeatherCard/WeatherCard';
 
 function App() {
   const [city, setCity] = useState('Toronto')
@@ -14,26 +16,32 @@ function App() {
   // move to api.js or customHook
   const fetchData = () => {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
+
     setLoading(true)
+
     fetch(url)
       .then(response => response.json())
-      .then(data => setWeatherData(data))
+      .then(data => {
+        const transformedData = {
+          feelsLike: data.main?.feels_like,
+          sunsetTime: data?.sys?.sunset,
+          sunriseTime: data?.sys?.sunrise,
+          temperature: data.main?.temp,
+          weatherType: data.weather?.[0]?.main,
+          weatherIcon: data.weather?.[0]?.icon,
+        }
+        setWeatherData(transformedData)
+      })
       .catch(error => setError(error))
       .finally(() => setLoading(false))
-  }
-
-  const handleCityInput = (e) => setCity(e.target.value)
-
-  const handleSearch = (e) => {
-    e.preventDefault()
-    fetchData()
   }
 
   // use for day/night theme
   const getDayOrNight = () => {
     const now = Date.now()
-    const sunset = new Date(weatherData?.sys?.sunset * 1000)// convert to milliseconds
-    const sunrise = new Date(weatherData?.sys?.sunrise * 1000)
+    const sunset = new Date(weatherData?.sunsetTime * 1000) // convert to milliseconds
+    const sunrise = new Date(weatherData?.sunriseTime * 1000)
+
     if (now <= sunrise || now >= sunset ) {
       setDayOrNight('night')
     } else if (now > sunrise && now < sunset) {
@@ -51,44 +59,25 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>Breezio</h1>
-        {/* input form */}
-        <form>
-          <input
-            type='text'
-            value={city}
-            onChange={(e) => handleCityInput(e)}
+      <main>
+        <div className="container">
+          <h1>Breezio</h1>
+
+          <SearchBar
+            setCity={setCity}
+            fetchData={fetchData}
           />
-          <button onClick={(e) => handleSearch(e)}>Search</button>
-        </form>
 
-        {/* display data here */}
-        <div>
-          {loading && <p>Loading...</p>}
-          {error && <p>Error{error}</p>}
-
-          {weatherData && 
-            <>
-              <h2>{city}</h2>
-              <p>{Math.floor(weatherData.main?.temp)}&#8451;</p>
-
-              <div>
-                <p>High: {Math.floor(weatherData.main?.temp_max)}&#8451;</p>
-                <p>Low: {Math.floor(weatherData.main?.temp_min)}&#8451;</p>
-              </div>
-
-              <div>
-                <img
-                  src={`https://openweathermap.org/img/wn/${weatherData.weather?.[0]?.icon}@2x.png`}
-                  alt={weatherData.weather?.[0]?.main} />
-                <p>{weatherData.weather?.[0]?.main}</p>
-              </div>
-
-            </>
-          }
+          {/* display data here */}
+          <WeatherCard
+            city={city}
+            error={error}
+            loading={loading}
+            weatherData={weatherData}
+          />
         </div>
-      </header>
+        
+      </main>
     </div>
   );
 }
