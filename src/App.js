@@ -4,37 +4,13 @@ import React, { useState, useEffect } from 'react';
 import SearchBar from 'components/SearchBar/SearchBar';
 import WeatherCard from 'components/WeatherCard/WeatherCard';
 
+import useWeatherData from 'api/useWeatherData';
+
 function App() {
   const [city, setCity] = useState('Toronto')
-  const [weatherData, setWeatherData] = useState(null)
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
   const [dayOrNight, setDayOrNight] = useState('') // use for day/night theme
+  const {weatherData, loading, error} = useWeatherData({city})
 
-  const API_KEY = 'bbbf8dee2adfd7d13b5ce5d85143c91b'
-  
-  // move to api.js or customHook
-  const fetchData = () => {
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
-
-    setLoading(true)
-
-    fetch(url)
-      .then(response => response.json())
-      .then(data => {
-        const transformedData = {
-          feelsLike: data.main?.feels_like,
-          sunsetTime: data?.sys?.sunset,
-          sunriseTime: data?.sys?.sunrise,
-          temperature: data.main?.temp,
-          weatherType: data.weather?.[0]?.main,
-          weatherIcon: data.weather?.[0]?.icon,
-        }
-        setWeatherData(transformedData)
-      })
-      .catch(error => setError(error))
-      .finally(() => setLoading(false))
-  }
 
   // use for day/night theme
   const getDayOrNight = () => {
@@ -52,10 +28,10 @@ function App() {
   }
 
   // fetch data on load
-  useEffect(() => {
-    fetchData()
-    getDayOrNight()
-  }, []);
+  // useEffect(() => {
+  //   fetchData()
+  //   getDayOrNight()
+  // }, []);
 
   return (
     <div className="App">
@@ -65,7 +41,6 @@ function App() {
 
           <SearchBar
             setCity={setCity}
-            fetchData={fetchData}
           />
 
           {/* display data here */}
@@ -98,11 +73,11 @@ export default App;
 // 5. Style response and input - use SCSS
 //  5a. responsiveness
 // 6. Input Verification
-// 7. Split into components
+// *7. Split into components
 // 8. Accessibility check
 // 9. Favicon
 // 10. Encrypt the API key
-// 11. Transform data into a smaller object
+// *11. Transform data into a smaller object
 // Nice to have - buttons for major Canadian cities
-//  Nice to have - autofill
+// Nice to have - autofill
 // Nice to have - day and night theme

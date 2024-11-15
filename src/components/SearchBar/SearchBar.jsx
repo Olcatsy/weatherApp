@@ -1,6 +1,6 @@
 import React, { useState }from "react";
 
-const SearchBar = ({ setCity, fetchData }) => {
+const SearchBar = ({ setCity }) => {
   const [inputValue, setInputValue] = useState('')
 
   const handleCityInput = (e) => setInputValue(e.target.value)
@@ -8,7 +8,6 @@ const SearchBar = ({ setCity, fetchData }) => {
   const handleSearch = (e) => {
     e.preventDefault()
     setCity(inputValue)
-    fetchData()
   }
 
   return (
