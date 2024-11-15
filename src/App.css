@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
 @import './styles/normalize.css';
 @import './styles/global.css';
+@import './components/Loader/styles/Loader.css';
 @import './components/WeatherCard/styles/WeatherCard.css';
 @import './components/SearchBar/styles/SearchBar.css';/*# sourceMappingURL=App.css.map */

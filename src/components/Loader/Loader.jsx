@@ -1,9 +1,6 @@
 const Loader = () => {
   return (
-    <div>
-      {/* insert a loading spinner icon here */}
-      <p>Loading...</p>
-    </div>
+    <span class="loader"></span>
   )
 }
 

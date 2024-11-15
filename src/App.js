@@ -27,15 +27,14 @@ function App() {
     }
   }
 
-  // fetch data on load
   useEffect(() => {
-      getDayOrNight()
+    getDayOrNight()
   }, [weatherData]);
 
   return (
     <div className="App">
-      <main className={`${dayOrNight}-theme`}>
-        <div className="container">
+      <main>
+        <div className={`container ${dayOrNight}-theme`}>
 
           <div className="header-wrapper">
             <img
@@ -72,20 +71,20 @@ export default App;
 //  *2b. Save data to state
 //  *2bb. Gather data needed
 //  *2c. Create loader
-//  2d. Catch errors
+//  *2d. Catch errors
 //  *2e. Create custom hook
 // *3. Create and handle input field
 //  *3a. create and handle submit button
 // *4. Display response 
-// 5. Style response and input - use SCSS
-//  5a. responsiveness
+// *5. Style response and input - use SCSS
+//  *5a. responsiveness
 // 6. Input Verification
 // *7. Split into components
 // 8. Accessibility check
-// 9. Favicon
+// *9. Favicon
 // 10. Encrypt the API key
 // *11. Transform data into a smaller object
 
 // Nice to have - buttons for major Canadian cities
 // Nice to have - autofill
-// Nice to have - day and night theme
+// *Nice to have - day and night theme

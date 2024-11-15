@@ -7,6 +7,7 @@ body {
   font-size: 1.6rem;
   position: relative;
   height: 100vh;
+  background-color: #1a1627;
 }
 
 main {
@@ -14,45 +15,37 @@ main {
   height: 100vh;
   display: grid;
   justify-content: center;
-  align-content: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-// VARIABLES
-$space-s: 8px;
-$space-m: 16px;
-$space-l: 24px;
-$space-xl: 32px;
-
-$corner-radius: 8px;
-
-// NOT WORKING
-.day-theme {
-  background-image: url("../assets/dayBG.jpg");
-}
-
-.night-theme {
-  background-image: url("../assets/nightBG.jpg")
 }
 
 .container {
-  padding: $space-l;
-  background-color: rgba(0, 0, 0, 0.6);
-  border-radius: $corner-radius;
+  padding: 20px 40px 40px;
+  border-radius: 8px;
   color: white;
+  background-size: cover;
+  background-position: left;
+  min-width: 350px;
+  margin: 24px;
+}
+
+.day-theme {
+  background-image: linear-gradient(0deg, rgba(81, 47, 84, 0.3), rgba(81, 47, 84, 0.3)), url("../assets/dayBG.jpg");
+}
+
+.night-theme {
+  background-image: linear-gradient(0deg, rgba(81, 47, 84, 0.3), rgba(81, 47, 84, 0.3)), url("../assets/nightBG.jpg");
+  // background-color: rgba(84, 47, 69, 0.2)
 }
 
 .header {
   &-wrapper {
     display: flex;
     align-items: center;
-    gap: $space-s;
+    gap: 8px;
   }
 
   &-logo {
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     filter: invert(100%);
   }
 

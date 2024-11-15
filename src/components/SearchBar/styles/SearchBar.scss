@@ -1,8 +1,35 @@
 .searchbar {
   display: flex;
-  // margin: $space-m;
+  margin: 16px 0;
+  width: 100%;
+  color: white;
+  box-shadow: 10px 10px 27px -10px rgba(5, 5, 5, 1);
 
   &-input {
     border: none;
+    background: #1a1627;
+    opacity: 0.9;
+    padding: 8px;
+    border-radius: 4px 0 0 4px;
+    color: inherit;
+    flex-grow: 1;
+
+    &::placeholder {
+      color: white;
+    }
   }
+
+  &-submit {
+    padding: 8px;
+    background-color: #974e5a;
+    border-radius: 0 4px 4px 0;
+    color: inherit;
+
+    &:hover,
+    &:focus {
+      background-color: #d2795e;
+      transition: all 1s ease-in;
+    }
+  }
+  
 }

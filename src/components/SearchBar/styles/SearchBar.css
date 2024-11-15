@@ -1,6 +1,32 @@
 .searchbar {
   display: flex;
+  margin: 16px 0;
+  width: 100%;
+  color: white;
+  box-shadow: 10px 10px 27px -10px rgb(5, 5, 5);
 }
 .searchbar-input {
   border: none;
+  background: #1a1627;
+  opacity: 0.9;
+  padding: 8px;
+  border-radius: 4px 0 0 4px;
+  color: inherit;
+  flex-grow: 1;
+}
+.searchbar-input::-moz-placeholder {
+  color: white;
+}
+.searchbar-input::placeholder {
+  color: white;
+}
+.searchbar-submit {
+  padding: 8px;
+  background-color: #974e5a;
+  border-radius: 0 4px 4px 0;
+  color: inherit;
+}
+.searchbar-submit:hover, .searchbar-submit:focus {
+  background-color: #d2795e;
+  transition: all 1s ease-in;
 }/*# sourceMappingURL=SearchBar.css.map */

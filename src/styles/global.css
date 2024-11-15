@@ -7,6 +7,7 @@ body {
   font-size: 1.6rem;
   position: relative;
   height: 100vh;
+  background-color: #1a1627;
 }
 
 main {
@@ -14,24 +15,24 @@ main {
   height: 100vh;
   display: grid;
   justify-content: center;
-  align-content: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.day-theme {
-  background-image: url("../assets/dayBG.jpg");
-}
-
-.night-theme {
-  background-image: url("../assets/nightBG.jpg");
 }
 
 .container {
-  padding: 24px;
-  background-color: rgba(0, 0, 0, 0.6);
+  padding: 20px 40px 40px;
   border-radius: 8px;
   color: white;
+  background-size: cover;
+  background-position: left;
+  min-width: 350px;
+  margin: 24px;
+}
+
+.day-theme {
+  background-image: linear-gradient(0deg, rgba(81, 47, 84, 0.3), rgba(81, 47, 84, 0.3)), url("../assets/dayBG.jpg");
+}
+
+.night-theme {
+  background-image: linear-gradient(0deg, rgba(81, 47, 84, 0.3), rgba(81, 47, 84, 0.3)), url("../assets/nightBG.jpg");
 }
 
 .header-wrapper {
@@ -40,8 +41,8 @@ main {
   gap: 8px;
 }
 .header-logo {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   filter: invert(100%);
 }
 .header-text {

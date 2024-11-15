@@ -1,0 +1,49 @@
+.card {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+
+  &-wrapper {
+    min-height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #1a1627;
+    background: linear-gradient(47deg, #1a1627 6%, #1a1627 68%, rgba(66, 48, 47, 0.9) 100%);
+    margin-top: 16px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 27px -10px rgba(5, 5, 5, 1);
+  }
+
+  &-city {
+    font-size: 30px;
+    text-transform: capitalize;
+  }
+
+  &-temperature {
+    text-align: center;
+
+    &-main {
+      font-size: 46px;
+      margin-bottom: 8px;
+    }
+  }
+
+  &-weather {
+    display: flex;
+    justify-items: start;
+    align-items: center;
+
+    &-icon {
+      width: 80px;
+      height: 80px;
+    }
+
+    &-type {
+      font-size: 26px;
+    }
+  }
+}
