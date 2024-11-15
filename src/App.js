@@ -82,9 +82,9 @@ export default App;
 // *4. Display response 
 // *5. Style response and input - use SCSS
 //  *5a. responsiveness
-// 6. Input Verification
+// *6. Input Verification
 // *7. Split into components
-// 8. Accessibility check
+// *8. Accessibility check
 // *9. Favicon
 // *10. Encrypt the API key
 // *11. Transform data into a smaller object
@@ -92,3 +92,4 @@ export default App;
 // Nice to have - buttons for major Canadian cities
 // Nice to have - autofill
 // *Nice to have - day and night theme
+// Nice to have - Refactor with SCSS variables for reusability
