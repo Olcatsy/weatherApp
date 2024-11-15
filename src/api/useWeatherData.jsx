@@ -5,9 +5,7 @@ const useWeatherData = ({ city }) => {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null) 
 
-  const API_KEY = 'bbbf8dee2adfd7d13b5ce5d85143c91b'
-
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${process.env.REACT_APP_API_KEY}`
 
   useEffect(() => {
     setLoading(true)
