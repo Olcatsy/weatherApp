@@ -86,7 +86,7 @@ export default App;
 // *7. Split into components
 // 8. Accessibility check
 // *9. Favicon
-// 10. Encrypt the API key
+// *10. Encrypt the API key
 // *11. Transform data into a smaller object
 
 // Nice to have - buttons for major Canadian cities
