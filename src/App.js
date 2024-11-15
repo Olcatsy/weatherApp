@@ -29,6 +29,7 @@ function App() {
 
   useEffect(() => {
     getDayOrNight()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [weatherData]);
 
   return (
